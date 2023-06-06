@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    
+    <body>
+        <form>
+            <p>Введите математическое выражение: </p>
+            <input type="text" id="num" value="0" onkeyup="this.value = this.value.replace(/[^\d*+/-]/g,'');">
+            <button type="button" id="but" onclick="count()">Посчитать</button>      
+            <p id="result">Ваш результат: 0</p>
+        </form>
+        <script>
+            function count(){
+                let num = document.querySelector("#num");
+                let str = num.value;
+                let lastChar = str.substring(str.length - 1);
+                let result = document.querySelector("#result");
+
+                if( !( /^\d+$/.test(lastChar)  ) ){
+                    result.textContent =  "Введите матем. выражение" ;
+                    return;
+                }
+               result.textContent =  "Ваш результат: " + eval(str);
+            }
+        </script>
+    </body>
+</html>
